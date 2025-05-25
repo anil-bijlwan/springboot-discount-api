@@ -12,12 +12,7 @@ public class DiscountResponse {
     public DiscountResponse(String customerName, double finalAmount) {
         this.customerName = customerName;
         this.finalAmount = finalAmount;
-    }
-
-    public DiscountResponse(String customerName, double finalAmount, Map<String, Object> responseMap) {
-        this.customerName = customerName;
-        this.finalAmount = finalAmount;
-        this.responseMap = responseMap;
+        this.responseMap = new HashMap<>();
     }
 
     public String getCustomerName() {
