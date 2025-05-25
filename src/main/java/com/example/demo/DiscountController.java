@@ -2,6 +2,8 @@ package com.example.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import com.example.demo.DiscountRequest;
+import com.example.demo.DiscountResponse;
 
 @RestController
 @RequestMapping("/discount")
