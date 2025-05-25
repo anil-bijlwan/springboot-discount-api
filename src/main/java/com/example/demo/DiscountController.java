@@ -14,7 +14,7 @@ public class DiscountController {
 
     @PostMapping
     public DiscountResponse calculateDiscount(@RequestBody DiscountRequest request) {
-        return discountService.calculate(request);
+        return discountService.calculateDiscount(request);
     }
 
 }
