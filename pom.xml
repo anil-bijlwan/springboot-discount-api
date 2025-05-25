@@ -8,11 +8,17 @@
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.1.0</version>
+        <relativePath/>
+    </parent>
+
     <name>Discount Calculator</name>
     <description>Discount Calculator Spring Boot Application</description>
 
     <properties>
-        <spring.boot.version>3.2.6</spring.boot.version>
         <java.version>17</java.version>
     </properties>
 

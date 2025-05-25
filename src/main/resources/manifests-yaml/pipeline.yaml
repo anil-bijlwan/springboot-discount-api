@@ -5,6 +5,7 @@ metadata:
 spec:
     workspaces:
         - name: shared-workspace
+        - name: maven-settings
     params:
         - name: GIT_URL
           type: string
@@ -32,9 +33,13 @@ spec:
                 value:
                     - clean
                     - package
+              - name: CONTEXT_DIR
+                value: ./springboot-discount-api
           workspaces:
               - name: source
                 workspace: shared-workspace
+              - name: maven-settings
+                workspace: maven-settings
         - name: build-image
           taskRef:
               name: buildah

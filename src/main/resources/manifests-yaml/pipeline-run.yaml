@@ -7,9 +7,11 @@ spec:
         name: springboot-pipeline
     params:
         - name: GIT_URL
-          value: https://github.com/<your-username>/<your-repo>.git
+          value: https://github.com/anil-bijlwan/springboot-discount-api.git
         - name: IMAGE_NAME
-          value: image-registry.openshift-image-registry.svc:5000/discount-api/springboot-discount-api:latest
+          value: image-registry.openshift-image-registry.svc:5000/discount-api/modern-discount-api:latest
+        - name: CONTEXT_DIR
+          value: ./springboot-discount-api
     workspaces:
         - name: shared-workspace
           volumeClaimTemplate:
@@ -20,3 +22,5 @@ spec:
                   resources:
                       requests:
                           storage: 1Gi
+        - name: maven-settings
+          emptyDir: {}
