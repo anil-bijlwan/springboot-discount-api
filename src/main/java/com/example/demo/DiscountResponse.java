@@ -9,6 +9,11 @@ public class DiscountResponse {
     private double finalAmount;
     private Map<String, Object> responseMap;
 
+    public DiscountResponse(String customerName, double finalAmount) {
+        this.customerName = customerName;
+        this.finalAmount = finalAmount;
+    }
+
     public DiscountResponse(String customerName, double finalAmount, Map<String, Object> responseMap) {
         this.customerName = customerName;
         this.finalAmount = finalAmount;
