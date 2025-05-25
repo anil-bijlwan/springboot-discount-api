@@ -9,6 +9,8 @@ public class DiscountRequest {
     private double discountRate;
     private double purchaseAmount;
 
+    public DiscountRequest() {}
+
     public DiscountRequest(String customerId, double purchaseAmount) {
         this.customerId = customerId;
         this.purchaseAmount = purchaseAmount;
