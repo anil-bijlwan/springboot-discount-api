@@ -32,7 +32,7 @@ public class DiscountResponse {
     }
 
     public void setResponseMap(Map<String, Object> responseMap) {
-        this.responseMap = responseMap
+        this.responseMap = responseMap;
     }
 
     @Override
