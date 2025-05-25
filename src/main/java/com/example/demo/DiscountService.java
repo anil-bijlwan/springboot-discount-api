@@ -1,12 +1,11 @@
-import java.util.HashMap;
-import java.util.Map;
-import javax.inject.Inject;
+package com.example.demo;
+
 import org.springframework.stereotype.Service;
 
 @Service
 public class DiscountService {
 
-    @Inject
+    @Autowired
     private DiscountController discountController;
 
     public DiscountResponse calculateDiscount(DiscountRequest request) {

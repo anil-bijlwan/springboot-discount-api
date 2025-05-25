@@ -1,24 +1,18 @@
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.method.annotation.RequestBody;
+package com.example.demo;
 
-import javax.inject.Inject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/discount")
 public class DiscountController {
 
-    @Inject
+    @Autowired
     private DiscountService discountService;
 
-    @GetMapping("/")
-    public String welcome() {
-        return "Welcome to the Discount Calculator!";
-    }
-
-    @PostMapping("/calculate-discount")
+    @PostMapping
     public DiscountResponse calculateDiscount(@RequestBody DiscountRequest request) {
-        return discountService.calculateDiscount(request);
+        return discountService.calculate(request);
     }
 
 }
