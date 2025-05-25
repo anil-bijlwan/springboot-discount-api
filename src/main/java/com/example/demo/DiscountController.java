@@ -14,6 +14,7 @@ public class DiscountController {
 
     @PostMapping
     public DiscountResponse calculateDiscount(@RequestBody DiscountRequest request) {
+        System.out.println("inside service:: "+request.getCustomerId());
         return discountService.calculate(request);
     }
 
