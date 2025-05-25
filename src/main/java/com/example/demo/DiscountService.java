@@ -23,7 +23,7 @@ public class DiscountService {
 
             return new DiscountResponse(customerName, finalAmount, responseMap);
         } else {
-            return new DiscountResponse("Unknown", 0.0, new hashMap<>());
+            return new DiscountResponse("Unknown", 0.0, new HashMap<>());
         }
     }
 }
