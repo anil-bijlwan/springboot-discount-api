@@ -6,6 +6,7 @@ import java.util.Map;
 public class DiscountRequest {
 
     private String customerId;
+    private double discountRate;
     private double purchaseAmount;
 
     public DiscountRequest(String customerId, double purchaseAmount) {
@@ -19,6 +20,14 @@ public class DiscountRequest {
 
     public void setCustomerId(String customerId) {
         this.customerId = customerId;
+    }
+
+    public double getDiscountRate() {
+        return discountRate;
+    }
+
+    public void setDiscountRate(double discountRate) {
+        this.discountRate = discountRate;
     }
 
     public double getPurchaseAmount() {

@@ -8,21 +8,22 @@ import java.util.Map;
 @Service
 public class DiscountService {
 
-    public DiscountResponse calculateDiscount(DiscountRequest request) {
-        double discountRate = 0.10;
-        double purchaseAmount = request.getPurchaseAmount();
+    public DiscountResponse calculate(DiscountRequest request) {
+        String customerId = request.getCustomerId();
+        if("CUST1001".equals(customerId)) {
+            String customerName = "Don Bosco";
+            double purchaseAmount = request.getPurchaseAmount();
+            double discountRate = request.getDiscountRate();
+            double discountAmount = purchaseAmount * discountRate;
+            double finalAmount = purchaseAmount - discountAmount;
 
-        double discountAmount = purchaseAmount * discountRate;
-        double finalAmount = purchaseAmount - discountAmount;
+            Map<String, Object> responseMap = new HashMap<>();
+            responseMap.put("status", "success");
+            responseMap.put("discountAmount", discountAmount);
 
-        Map<String, Object> responseMap = new HashMap<>();
-        responseMap.put("customerName", request.getCustomerId());
-        responseMap.put("finalAmount", finalAmount);
-
-        DiscountResponse discountResponse = new DiscountResponse(request.getCustomerId(), finalAmount);
-        discountResponse.setResponseMap(responseMap);
-
-        return discountResponse;
+            return new DiscountResponse(customerName, finalAmount, responseMap);
+        } else {
+            return new DiscountResponse("Unknown", 0.0, new hashMap<>());
+        }
     }
-
 }
