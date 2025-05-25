@@ -1,0 +1,47 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+    name: springboot-pipeline
+spec:
+    workspaces:
+        - name: shared-workspace
+    params:
+        - name: GIT_URL
+          type: string
+        - name: IMAGE_NAME
+          type: string
+    tasks:
+        - name: clone-repo
+          taskRef:
+              name: git-clone
+              kind: ClusterTask
+          params:
+              - name: url
+                value: $(params.GIT_URL)
+              - name: deleteExisting
+                value: "true"
+          workspaces:
+              - name: output
+                workspace: shared-workspace
+        - name: build-maven
+          taskRef:
+              name: maven
+              kind: ClusterTask
+          params:
+              - name: GOALS
+                value:
+                    - clean
+                    - package
+          workspaces:
+              - name: source
+                workspace: shared-workspace
+        - name: build-image
+          taskRef:
+              name: buildah
+              kind: ClusterTask
+          params:
+              - name: IMAGE
+                value: $(params.IMAGE_NAME)
+          workspaces:
+              - name: source
+                workspace: shared-workspace

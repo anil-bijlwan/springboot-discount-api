@@ -1,0 +1,22 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+    name: springboot-run
+spec:
+    pipelineRef:
+        name: springboot-pipeline
+    params:
+        - name: GIT_URL
+          value: https://github.com/<your-username>/<your-repo>.git
+        - name: IMAGE_NAME
+          value: image-registry.openshift-image-registry.svc:5000/discount-api/springboot-discount-api:latest
+    workspaces:
+        - name: shared-workspace
+          volumeClaimTemplate:
+              metadata:
+                  name: shared-pvc
+              spec:
+                  accessModes: ["ReadWriteOnce"]
+                  resources:
+                      requests:
+                          storage: 1Gi
